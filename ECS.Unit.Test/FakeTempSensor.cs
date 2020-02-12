@@ -10,7 +10,15 @@ namespace ECS.Unit.Test
     {
         public int GetTemp()
         {
-            throw new NotImplementedException();
+            return 0;
+        }
+        public int GetTempLow()
+        {
+            return -5;
+        }
+        public int GetTempHigh()
+        {
+            return 45;
         }
     }
 }

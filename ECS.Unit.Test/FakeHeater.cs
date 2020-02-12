@@ -8,14 +8,17 @@ namespace ECS.Unit.Test
 {
     public class FakeHeater : IHeater
     {
+        public bool IsCalledOn { get; private set; } = false;
+        public bool IsCalledOff { get; private set; } = false;
+
         public void TurnOn()
         {
-            throw new NotImplementedException();
+            IsCalledOn = true;
         }
 
         public void TurnOff()
         {
-            throw new NotImplementedException();
+            IsCalledOff = true;
         }
     }
 }

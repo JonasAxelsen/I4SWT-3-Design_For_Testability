@@ -12,9 +12,10 @@ namespace ECS
 
     public class TempSensor : ITempSensor
     {
+        Random rng = new Random();
         public int GetTemp()
         {
-            throw new NotImplementedException();
+            return rng.Next(-4, 20);
         }
     }
 }
