@@ -10,10 +10,11 @@ namespace ECS
         private IHeater _heater;
         private ITempSensor _tempSensor;
 
-        ECS(IHeater heater, ITempSensor tempSensor)
+        ECS(int threshold, IHeater heater, ITempSensor tempSensor)
         {
+            Threshold = threshold;
             _heater = heater;
-            _tempSensor = tempSensor
+            _tempSensor = tempSensor;
         }
 
         public int CurTemp
@@ -25,7 +26,8 @@ namespace ECS
 
         public void Regulate()
         {
-            throw new System.NotImplementedException();
+            if (CurTemp < Threshold) { _heater.TurnOn(); } 
+            else { _heater.TurnOff(); }
         }
     }
 }
