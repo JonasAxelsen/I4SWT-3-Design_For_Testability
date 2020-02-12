@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestECS
 {
     [TestClass]
-    public class UnitTest1
+    public class HeaterUnitTest
     {
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }
