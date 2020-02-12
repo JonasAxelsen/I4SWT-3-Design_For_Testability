@@ -24,18 +24,32 @@ namespace ECS.Unit.Test
 
 
         // CurTemp
-        [Test]
+        [TestCase()]
+        [TestCase()]
+        [TestCase()]
+        [TestCase()]
         public void CurTemp_CallAfterConstructor_ReturnsAValidValue()
         {
-            
+            // Arrange
+            int temperature;
+
+            // Act
+            temperature = uut.CurTemp;
+            TestContext.Out.WriteLine("Temperature: " + temperature); // Writes temperature to test result
+
+            // Assert
+            Assert.That(temperature, Is.InRange(-14, 20));
         }
 
         // Theshold
+        [Test]
+        public void Threshold_()
+        {
 
+        }
 
 
         // Regulate
-
 
 
     }
