@@ -24,11 +24,7 @@ namespace ECS
             _tempSensor = tempSensor;
         }
 
-        public int CurTemp
-        {
-            get { return _tempSensor.GetTemp(); }
-        }
-
+        public int CurTemp { get { return _tempSensor.GetTemp(); } }
         public int Threshold { get; set; }
 
         public void Regulate()

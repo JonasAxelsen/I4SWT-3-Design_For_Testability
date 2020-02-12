@@ -15,12 +15,12 @@ namespace ECS
     {
         public void TurnOn()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Heater turned on!");
         }
 
         public void TurnOff()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Heater turned off!");
         }
     }
 }
