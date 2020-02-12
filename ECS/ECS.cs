@@ -7,10 +7,10 @@ namespace ECS
 {
     public class ECS
     {
-        private IHeater _heater;
-        private ITempSensor _tempSensor;
+        private readonly IHeater _heater;
+        private readonly ITempSensor _tempSensor;
 
-        ECS(int threshold, IHeater heater, ITempSensor tempSensor)
+        public ECS(int threshold, IHeater heater, ITempSensor tempSensor)
         {
             Threshold = threshold;
             _heater = heater;
