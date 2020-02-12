@@ -10,10 +10,33 @@ namespace ECS.Unit.Test
     [TestFixture]
     public class EcsUnitTest
     {
-        [TestCase()]
-        public void Method1()
-        {
+        private FakeHeater uutFakeHeater;
+        private FakeTempSensor uutFakeTempSensor;
+        private ECS uut;
 
+        [SetUp]
+        public void SetUp()
+        {
+            uutFakeHeater = new FakeHeater();
+            uutFakeTempSensor = new FakeTempSensor();
+            uut = new ECS(uutFakeHeater, uutFakeTempSensor); // Threshold is set to 15 default
         }
+
+
+        // CurTemp
+        [Test]
+        public void CurTemp_CallAfterConstructor_ReturnsAValidValue()
+        {
+            
+        }
+
+        // Theshold
+
+
+
+        // Regulate
+
+
+
     }
 }
