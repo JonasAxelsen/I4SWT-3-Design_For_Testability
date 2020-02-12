@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ECS
+namespace ECS.Unit.Test
 {
-    public interface ITempSensor
-    {
-        int GetTemp();
-    }
-
-    public class TempSensor : ITempSensor
+    public class FakeTempSensor : ITempSensor
     {
         public int GetTemp()
         {
