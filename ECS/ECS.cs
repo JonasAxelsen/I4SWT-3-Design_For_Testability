@@ -17,6 +17,13 @@ namespace ECS
             _tempSensor = tempSensor;
         }
 
+        public ECS(IHeater heater, ITempSensor tempSensor)
+        {
+            Threshold = 15;
+            _heater = heater;
+            _tempSensor = tempSensor;
+        }
+
         public int CurTemp
         {
             get { return _tempSensor.GetTemp(); }
