@@ -52,13 +52,25 @@ namespace ECS.Unit.Test
 
         // Regulate
         [Test]
-        public void Regulate_callsHeaterCorrectly()
+        public void Regulate_aboveThreshold_callsHeaterCorrectly()
         {
             uutFakeTempSensor.GetTemp().Returns(uut.Threshold + 10);
 
             uut.Regulate();
 
             uutFakeHeater.Received(1).TurnOff();
+            uutFakeHeater.DidNotReceive().TurnOn();
+        }
+
+        [Test]
+        public void Regulate_belowThreshold_callsHeaterCorrectly()
+        {
+            uutFakeTempSensor.GetTemp().Returns(uut.Threshold - 10);
+
+            uut.Regulate();
+
+            uutFakeHeater.Received(1).TurnOn();
+            uutFakeHeater.DidNotReceive().TurnOff();
         }
 
     }
