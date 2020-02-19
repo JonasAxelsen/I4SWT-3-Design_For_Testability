@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace ECS.Unit.Test
@@ -10,35 +11,36 @@ namespace ECS.Unit.Test
     [TestFixture]
     public class EcsUnitTest
     {
-        private FakeHeater uutFakeHeater;
-        private FakeTempSensor uutFakeTempSensor;
+        private IHeater uutFakeHeater;
+        private ITempSensor uutFakeTempSensor;
         private ECS uut;
 
         [SetUp]
         public void SetUp()
         {
-            uutFakeHeater = new FakeHeater();
-            uutFakeTempSensor = new FakeTempSensor();
+            uutFakeHeater = Substitute.For<IHeater>();
+            uutFakeTempSensor = Substitute.For<ITempSensor>();
+            
             uut = new ECS(uutFakeHeater, uutFakeTempSensor); // Threshold is set to 15 default
         }
 
 
         // CurTemp
-        [TestCase()]
-        [TestCase()]
-        [TestCase()]
-        [TestCase()]
-        public void CurTemp_CallAfterConstructor_ReturnsAValidValue()
+        [TestCase(int.MinValue)]
+        [TestCase(int.MaxValue)]
+        [TestCase(0)]
+        [TestCase(-1)]
+        [TestCase(1)]
+        public void CurTemp_CallAfterConstructor_ReturnsAValidValue(int temperature)
         {
             // Arrange
-            int temperature;
+            uutFakeTempSensor.GetTemp().Returns(temperature);
 
             // Act
-            temperature = uut.CurTemp;
-            TestContext.Out.WriteLine("Temperature: " + temperature); // Writes temperature to test result
+            int returnedTemperature = uut.CurTemp;
 
             // Assert
-            Assert.That(temperature, Is.InRange(-14, 20));
+            Assert.That(returnedTemperature, Is.EqualTo(temperature));
         }
 
         // Theshold
