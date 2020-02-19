@@ -50,7 +50,7 @@ namespace ECS.Unit.Test
 
         }
 
-        // Regulate
+        #region RegulateTest
         [Test]
         public void Regulate_aboveThreshold_callsHeaterTurnOffCorrectly()
         {
@@ -90,6 +90,6 @@ namespace ECS.Unit.Test
 
             uutFakeHeater.DidNotReceive().TurnOff();
         }
-
+        #endregion
     }
 }
