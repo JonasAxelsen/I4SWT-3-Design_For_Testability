@@ -50,9 +50,16 @@ namespace ECS.Unit.Test
 
         }
 
-
         // Regulate
+        [Test]
+        public void Regulate_callsHeaterCorrectly()
+        {
+            uutFakeTempSensor.GetTemp().Returns(uut.Threshold + 10);
 
+            uut.Regulate();
+
+            uutFakeHeater.Received(1).TurnOff();
+        }
 
     }
 }
